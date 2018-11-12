@@ -1,0 +1,65 @@
+/*!
+ * Custom CSS
+ */
+
+body {
+
+}
+
+.word-wrapable {
+    word-wrap: break-word;
+}
+
+.top20 { margin-top:20px; }
+
+.tr-editable {
+    cursor: pointer;
+}
+
+.level-td {
+    font-weight: bold;
+}
+
+.level-info {
+    color: #4cae4c;
+}
+
+.level-warn {
+    color: #bcc20c;
+}
+
+.level-error {
+    color: #cb4f33;
+}
+
+.scroll-but-disabled {
+    opacity: 0.1;
+}
+
+.scroll-up-but {
+    width: 100%;
+    height: 32px;
+    background: url(../images/scroll_up.png) no-repeat;
+    background-size: 32px 32px;
+    background-position: center;
+}
+
+.scroll-down-but {
+    width: 100%;
+    height: 32px;
+    background: url(../images/scroll_down.png) no-repeat;
+    background-size: 32px 32px;
+    background-position: center;
+}
+
+
+
+/*!
+ * If screen width lower than 1000px
+ */
+@media only screen and (max-width: 1000px) {
+    .nav-tabs>li {
+        float: none;
+    }
+
+}

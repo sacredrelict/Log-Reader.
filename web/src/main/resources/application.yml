@@ -1,0 +1,41 @@
+server:
+  port: 8080
+
+spring:
+  profiles.active: dev
+  application:
+    name: web
+  messages:
+    basename: i18n/messages
+
+---
+
+spring:
+  profiles: dev
+
+log.file.path: logs.txt
+
+logging:
+  file: D:/logs/logreader.log
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  level:
+    org.springframework.web: ERROR
+    com.sacredrelict.logreader: DEBUG
+
+---
+
+spring:
+  profiles: prod
+
+log.file.path: /tmp/logs/logs.txt
+
+logging:
+  file: /tmp/logs/logreader.log
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  level:
+    org.springframework.web: ERROR
+    com.sacredrelict.logreader: ERROR

@@ -1,0 +1,99 @@
+<div class="jumbotron">
+    <h1>This is page with logs.</h1>
+    <p>To change log file destination, look at application.yml file.</p>
+</div>
+
+<div ng-show="!error">
+    <div class="col-sm-12 top20">
+        <h4 class="text-left">Levels count:</h4>
+
+        <div class="table-responsive">
+            <table class="table table-hover table-condensed table-striped">
+                <thead>
+                <tr>
+                    <th class="col-md-6">Statistics for currently shown lines:</th>
+                    <th class="col-md-6">All log file statistics: (update every 30 sec.)</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        <div class="row">
+                            <div class="col-sm-3 level-info">INFO:</div>
+                            <div class="col-sm-3">
+                                <label class="form-control-plaintext">{{logs.infoSize}}</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-3 level-warn">WARNING:</div>
+                            <div class="col-sm-3">
+                                <label class="form-control-plaintext">{{logs.warningSize}}</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-3 level-error">ERROR:</div>
+                            <div class="col-sm-3">
+                                <label class="form-control-plaintext">{{logs.errorSize}}</label>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="row">
+                            <div class="col-sm-3 level-info">INFO:</div>
+                            <div class="col-sm-3">
+                                <label class="form-control-plaintext">{{logLevelInfoCount}}</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-3 level-warn">WARNING:</div>
+                            <div class="col-sm-3">
+                                <label class="form-control-plaintext">{{logLevelWarningCount}}</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-3 level-error">ERROR:</div>
+                            <div class="col-sm-3">
+                                <label class="form-control-plaintext">{{logLevelErrorCount}}</label>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="col-sm-12 top20">
+        <h4 class="text-left">Logs</h4>
+        <div ng-class="{'scroll-but-disabled' : !showScrollUp}" class="scroll-up-but" ng-click="scrollUp()" title="Scroll up"></div>
+        <div class="table-responsive">
+            <table class="table table-hover table-condensed table-striped">
+                <thead>
+                    <tr>
+                        <th class="col-md-3">Date</th>
+                        <th class="col-md-3">Level</th>
+                        <th class="col-md-6">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="log in logs.logLines">
+                        <td>{{log.date}}</td>
+                        <td class="level-td" ng-class="{ 'level-info'  : log.logLevel == 'INFO',
+                                                         'level-warn'  : log.logLevel == 'WARNING',
+                                                         'level-error' : log.logLevel == 'ERROR' } ">
+                            {{log.logLevel}}
+                        </td>
+                        <td>{{log.text}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div ng-class="{'scroll-but-disabled' : !showScrollDown}" class="scroll-down-but" ng-click="scrollDown()" title="Scroll down"></div>
+    </div>
+</div>
+
+<div ng-show="error">{{error}}</div>
